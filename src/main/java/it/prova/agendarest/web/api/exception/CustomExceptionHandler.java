@@ -46,16 +46,26 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
 		return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
 	}
-	
+
 	@ExceptionHandler(AgendaNotFoundException.class)
-	public ResponseEntity<Object> handleAgendaNotFoundException(AgendaNotFoundException ex,
-			WebRequest request) {
-		
+	public ResponseEntity<Object> handleAgendaNotFoundException(AgendaNotFoundException ex, WebRequest request) {
+
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
 		body.put("message", ex.getMessage());
 		body.put("status", HttpStatus.BAD_REQUEST);
-		
+
+		return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
+	}
+
+	@ExceptionHandler(PermessoNegatoException.class)
+	public ResponseEntity<Object> handlePermessoNegatoException(PermessoNegatoException ex, WebRequest request) {
+
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("message", ex.getMessage());
+		body.put("status", HttpStatus.BAD_REQUEST);
+
 		return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
 	}
 
