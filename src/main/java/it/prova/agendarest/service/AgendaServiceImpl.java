@@ -3,6 +3,7 @@ package it.prova.agendarest.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,6 +59,13 @@ public class AgendaServiceImpl implements AgendaService {
 	@Override
 	public List<Agenda> findByDescrizione(String descrizione) {
 		return repository.findByDescrizione(descrizione);
+	}
+
+	@Override
+	public List<Agenda> findByUsername() {
+		String usernameInSessione = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		return repository.FindByUsername(usernameInSessione);
 	}
 
 }

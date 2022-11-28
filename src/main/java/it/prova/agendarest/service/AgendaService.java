@@ -19,4 +19,6 @@ public interface AgendaService {
 	void rimuovi(Long idToRemove);
 
 	List<Agenda> findByDescrizione(String descrizione);
+	
+	List<Agenda> findByUsername();
 }
