@@ -12,8 +12,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import it.prova.agendarest.model.Agenda;
-import it.prova.raccoltafilmspringrest.dto.FilmDTO;
-import it.prova.raccoltafilmspringrest.model.Film;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AgendaDTO {
