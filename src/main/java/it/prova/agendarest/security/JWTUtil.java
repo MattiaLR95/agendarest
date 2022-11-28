@@ -27,7 +27,7 @@ public class JWTUtil {
 				.withSubject("User Details")
 				.withClaim("username", username)
 				.withIssuedAt(new Date())
-				.withIssuer("RACCOLTAFILMSPRINGREST")
+				.withIssuer("AGENDAREST")
 				.withExpiresAt(new Date((new Date()).getTime() + jwtExpirationMs))
 				.sign(Algorithm.HMAC256(secret));
 	}

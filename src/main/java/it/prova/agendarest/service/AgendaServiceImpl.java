@@ -2,13 +2,13 @@ package it.prova.agendarest.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.agendarest.model.Agenda;
 import it.prova.agendarest.repository.agenda.AgendaRepository;
+import it.prova.agendarest.web.api.exception.AgendaNotFoundException;
 
 @Service
 @Transactional(readOnly = true)
@@ -36,16 +36,19 @@ public class AgendaServiceImpl implements AgendaService {
 	}
 
 	@Override
+	@Transactional
 	public Agenda aggiorna(Agenda agendaInstance) {
 		return repository.save(agendaInstance);
 	}
 
 	@Override
+	@Transactional
 	public Agenda inserisciNuovo(Agenda agendaInstance) {
 		return repository.save(agendaInstance);
 	}
 
 	@Override
+	@Transactional
 	public void rimuovi(Long idToRemove) {
 		repository.findById(idToRemove).orElseThrow(
 				() -> new AgendaNotFoundException("Agenda not found! Impossibile completare l'operazione"));
